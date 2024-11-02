@@ -1,20 +1,22 @@
-const { getAllUsers } = require("./src/controllers/userController");
+const { updateUser } = require("./src/controllers/userController");
 
 
   (async () => {
     console.clear();
-
-    /*const event={
-      body: {"username": "admin", "password": "123456", "roleId": 1},
-    }
+    /*
+    const event={
+      body: {"username": "valen", "password": "valenadmin", "roleId": 1},
+    }*/
+    
     //updateUser
     const event= { 
-      params: {id: "40"},
-      body: {"username": "admin", "password": "123456", "roleId": 1}
-    };*/
-    const event= { 
-      params: {id: "43"},
+      queryStringParameters: {id: 4},
+      body: {"username": "mateo", "password": "prueba", "roleId": 1}
     };
-    const response = await getAllUsers();
+    /*
+    const event= { 
+      queryStringParameters: {id: 1},
+    };*/
+    const response = await updateUser(event);
     console.log(response);
   })()

@@ -1,48 +1,65 @@
 
 const userService = require('../services/userService');
 
-const createUser = async (req, res) => {
-  const { username , password, roleId } = req.body;
+const createUser = async (event) => {
+  const { username , password, roleId } = event.body;
   try {
     const user = await userService.createUser(username, password, roleId);
-    console.log("user",user);
+    return {
+      statusCode: 200,
+      body: JSON.stringify(user),
+    };
   } catch (error) {
-    console.log("error",error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Error al obtener el usuario' }),
+    };
   }
 };
 
-const getUserById = async (req, res) => {
-  const { id } = req.params;
+const getUserById = async (event) => {
+  const { id } = event.queryStringParameters;
   try {
     const user = await userService.getUserById(id);
-    console.log("user",user);
+    return {
+      statusCode: 200,
+      body: JSON.stringify(user),
+    };
   } catch (error) {
-    console.log("error",error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Error al obtener el usuario' }),
+    };
   }
 };
 
-const updateUser = async (req, res) => {
-  const { id } = req.params;
-  const { username, password, roleId } = req.body;
+const updateUser = async (event) => {
+  const { id, username, password, roleId } = event.body;
   try {
     const user = await userService.updateUser(id, username, password, roleId);
-    console.log("user",user);
+    return {
+      statusCode: 200,
+      body: JSON.stringify(user),
+    };
   } catch (error) {
     console.log("error",error);
   }
 };
 
-const deleteUser = async (req, res) => {
-  const { id } = req.params;
+const deleteUser = async (event) => {
+  const { id } = event.queryStringParameters;
   try {
     await userService.deleteUser(id);
-    console.log("userid",id);
+    return {
+      statusCode: 200,
+      body: JSON.stringify(`Se actualizo el usuario con el id ${id}`),
+    };
   } catch (error) {
     console.log("error",error);
   }
 };
 
-const getAllUsers = async (req,res) => {
+const getAllUsers = async () => {
   try {
     const users = await userService.getAllUsers();
     return {
@@ -50,7 +67,6 @@ const getAllUsers = async (req,res) => {
       body: JSON.stringify(users),
     };
   } catch (error) {
-    console.error("Error en el controlador:", error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Error al obtener los usuarios' }),
