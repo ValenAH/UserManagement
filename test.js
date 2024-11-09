@@ -4,19 +4,19 @@ const { createCustomer} = require("./src/controllers/customerController");
   (async () => {
     console.clear();
     const customer = {
-      name: 'Valentina',
-      lastname: 'Alzate',
-      email: 'valenah52@gmail.com',
+      name: "Liliana",
+      lastname: "Hincapie",
+      email: "lili@gmail.com",
       document_type_id: 1,
-      document_number: '1037668005',
-      address: 'Cra 24 F 40 sur',
-      phone: '3103775171',
-    };
+      document_number: "43588603",
+      address: "Cra 24 F 40 sur",
+      phone: "3127077823"
+    }
     
     const user = {
-      username: 'valen',
+      username: 'lilimaqua',
       password: 'securepassword',
-      roleId: 1,
+      roleId: 3,
     };
     const event={
       body: {customer, user},

@@ -25,4 +25,4 @@ const validateCustomer = async (documentNumber) => {
       return rows.length > 0
 }
 
-module.exports = { createCustomer };
+module.exports = { createCustomer,validateCustomer };

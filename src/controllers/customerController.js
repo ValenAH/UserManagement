@@ -8,7 +8,7 @@ const createCustomer = async (event) => {
       console.log("entidades creadas",response)
       return {
         statusCode: 200,
-        body: JSON.stringify(response),
+        body: JSON.stringify({user:response.user, customer:response.customer}),
       };
     } catch (error) {
       return {
