@@ -3,17 +3,17 @@ const customerService = require('../services/customerService');
 const createCustomer = async (event) => {
     const user  = event.body.user;
     const customer = event.body.customer;
+    let response
     try {
-      const response  = await customerService.createCustomer(user, customer);
-      console.log("entidades creadas",response)
+      response  = await customerService.createCustomer(user, customer);
       return {
-        statusCode: 200,
-        body: JSON.stringify({user:response.user, customer:response.customer}),
+        statusCode: response.statusCode,
+        body: JSON.stringify(response.body),
       };
     } catch (error) {
       return {
         statusCode: 500,
-        body: JSON.stringify({ error: response }),
+        message: JSON.stringify(error),
       };
     }
   };

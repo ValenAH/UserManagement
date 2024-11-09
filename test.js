@@ -4,17 +4,17 @@ const { createCustomer} = require("./src/controllers/customerController");
   (async () => {
     console.clear();
     const customer = {
-      name: "Liliana",
+      name: "Cristina",
       lastname: "Hincapie",
-      email: "lili@gmail.com",
+      email: "crispeta@gmail.com",
       document_type_id: 1,
-      document_number: "43588603",
+      document_number: "10101010",
       address: "Cra 24 F 40 sur",
-      phone: "3127077823"
+      phone: "31000000"
     }
     
     const user = {
-      username: 'lilimaqua',
+      username: 'crismaqua',
       password: 'securepassword',
       roleId: 3,
     };
