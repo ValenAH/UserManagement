@@ -12,7 +12,7 @@ const createUser = async (event) => {
   } catch (error) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Error al obtener el usuario' }),
+      body: JSON.stringify({ error: 'Error al crear el usuario' }),
     };
   }
 };
